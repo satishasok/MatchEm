@@ -1,0 +1,565 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FD0C9700197E912D007BC986 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0C96FF197E912D007BC986 /* GameKit.framework */; };
+		FD2630FF197BDD3300495675 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2630FE197BDD3300495675 /* Foundation.framework */; };
+		FD263101197BDD3300495675 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD263100197BDD3300495675 /* CoreGraphics.framework */; };
+		FD263103197BDD3300495675 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD263102197BDD3300495675 /* UIKit.framework */; };
+		FD263109197BDD3300495675 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD263107197BDD3300495675 /* InfoPlist.strings */; };
+		FD26310B197BDD3300495675 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD26310A197BDD3300495675 /* main.m */; };
+		FD26310F197BDD3300495675 /* MatchEmAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD26310E197BDD3300495675 /* MatchEmAppDelegate.m */; };
+		FD263112197BDD3300495675 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD263110197BDD3300495675 /* Main.storyboard */; };
+		FD263115197BDD3300495675 /* MatchEmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD263114197BDD3300495675 /* MatchEmViewController.m */; };
+		FD263117197BDD3300495675 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD263116197BDD3300495675 /* Images.xcassets */; };
+		FD26311E197BDD3300495675 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD26311D197BDD3300495675 /* XCTest.framework */; };
+		FD26311F197BDD3300495675 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2630FE197BDD3300495675 /* Foundation.framework */; };
+		FD263120197BDD3300495675 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD263102197BDD3300495675 /* UIKit.framework */; };
+		FD263128197BDD3300495675 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD263126197BDD3300495675 /* InfoPlist.strings */; };
+		FD26312A197BDD3300495675 /* MatchEmTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD263129197BDD3300495675 /* MatchEmTests.m */; };
+		FD263136197BDF9500495675 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD263135197BDF9500495675 /* NSMutableArray+Additions.m */; };
+		FD26313E197BDFA100495675 /* MemoryCardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = FD263139197BDFA100495675 /* MemoryCardMatchingGame.m */; };
+		FD26313F197BDFA100495675 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = FD26313B197BDFA100495675 /* PlayingCard.m */; };
+		FD263140197BDFA100495675 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = FD26313D197BDFA100495675 /* PlayingCardDeck.m */; };
+		FD263142197BE60E00495675 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD263141197BE60E00495675 /* iAd.framework */; };
+		FDE08618197FF12700E5EFE5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE08617197FF12700E5EFE5 /* AudioToolbox.framework */; };
+		FDE0861A197FFD1E00E5EFE5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE08619197FFD1E00E5EFE5 /* AVFoundation.framework */; };
+		FDE086201980006A00E5EFE5 /* CardFlip.wav in Resources */ = {isa = PBXBuildFile; fileRef = FDE0861B1980006A00E5EFE5 /* CardFlip.wav */; };
+		FDE086211980006A00E5EFE5 /* CardMatch.wav in Resources */ = {isa = PBXBuildFile; fileRef = FDE0861C1980006A00E5EFE5 /* CardMatch.wav */; };
+		FDE086221980006A00E5EFE5 /* CardsClose.wav in Resources */ = {isa = PBXBuildFile; fileRef = FDE0861D1980006A00E5EFE5 /* CardsClose.wav */; };
+		FDE086231980006A00E5EFE5 /* CardsDeal.wav in Resources */ = {isa = PBXBuildFile; fileRef = FDE0861E1980006A00E5EFE5 /* CardsDeal.wav */; };
+		FDE086241980006A00E5EFE5 /* CardsGameDone.wav in Resources */ = {isa = PBXBuildFile; fileRef = FDE0861F1980006A00E5EFE5 /* CardsGameDone.wav */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FD263121197BDD3300495675 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD2630F3197BDD3300495675 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FD2630FA197BDD3300495675;
+			remoteInfo = MatchEm;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FD0C96FF197E912D007BC986 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		FD2630FB197BDD3300495675 /* MatchEm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchEm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD2630FE197BDD3300495675 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FD263100197BDD3300495675 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FD263102197BDD3300495675 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FD263106197BDD3300495675 /* MatchEm-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MatchEm-Info.plist"; sourceTree = "<group>"; };
+		FD263108197BDD3300495675 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FD26310A197BDD3300495675 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FD26310C197BDD3300495675 /* MatchEm-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MatchEm-Prefix.pch"; sourceTree = "<group>"; };
+		FD26310D197BDD3300495675 /* MatchEmAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchEmAppDelegate.h; sourceTree = "<group>"; };
+		FD26310E197BDD3300495675 /* MatchEmAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchEmAppDelegate.m; sourceTree = "<group>"; };
+		FD263111197BDD3300495675 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FD263113197BDD3300495675 /* MatchEmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchEmViewController.h; sourceTree = "<group>"; };
+		FD263114197BDD3300495675 /* MatchEmViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchEmViewController.m; sourceTree = "<group>"; };
+		FD263116197BDD3300495675 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FD26311C197BDD3300495675 /* MatchEmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchEmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD26311D197BDD3300495675 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		FD263125197BDD3300495675 /* MatchEmTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MatchEmTests-Info.plist"; sourceTree = "<group>"; };
+		FD263127197BDD3300495675 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FD263129197BDD3300495675 /* MatchEmTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchEmTests.m; sourceTree = "<group>"; };
+		FD263134197BDF9500495675 /* NSMutableArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Additions.h"; sourceTree = "<group>"; };
+		FD263135197BDF9500495675 /* NSMutableArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Additions.m"; sourceTree = "<group>"; };
+		FD263138197BDFA100495675 /* MemoryCardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemoryCardMatchingGame.h; sourceTree = "<group>"; };
+		FD263139197BDFA100495675 /* MemoryCardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemoryCardMatchingGame.m; sourceTree = "<group>"; };
+		FD26313A197BDFA100495675 /* PlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCard.h; sourceTree = "<group>"; };
+		FD26313B197BDFA100495675 /* PlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCard.m; sourceTree = "<group>"; };
+		FD26313C197BDFA100495675 /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
+		FD26313D197BDFA100495675 /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
+		FD263141197BE60E00495675 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		FDE08617197FF12700E5EFE5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FDE08619197FFD1E00E5EFE5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FDE0861B1980006A00E5EFE5 /* CardFlip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CardFlip.wav; sourceTree = "<group>"; };
+		FDE0861C1980006A00E5EFE5 /* CardMatch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CardMatch.wav; sourceTree = "<group>"; };
+		FDE0861D1980006A00E5EFE5 /* CardsClose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CardsClose.wav; sourceTree = "<group>"; };
+		FDE0861E1980006A00E5EFE5 /* CardsDeal.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CardsDeal.wav; sourceTree = "<group>"; };
+		FDE0861F1980006A00E5EFE5 /* CardsGameDone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CardsGameDone.wav; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FD2630F8197BDD3300495675 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDE0861A197FFD1E00E5EFE5 /* AVFoundation.framework in Frameworks */,
+				FDE08618197FF12700E5EFE5 /* AudioToolbox.framework in Frameworks */,
+				FD0C9700197E912D007BC986 /* GameKit.framework in Frameworks */,
+				FD263142197BE60E00495675 /* iAd.framework in Frameworks */,
+				FD263101197BDD3300495675 /* CoreGraphics.framework in Frameworks */,
+				FD263103197BDD3300495675 /* UIKit.framework in Frameworks */,
+				FD2630FF197BDD3300495675 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD263119197BDD3300495675 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD26311E197BDD3300495675 /* XCTest.framework in Frameworks */,
+				FD263120197BDD3300495675 /* UIKit.framework in Frameworks */,
+				FD26311F197BDD3300495675 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FD2630F2197BDD3300495675 = {
+			isa = PBXGroup;
+			children = (
+				FD263104197BDD3300495675 /* MatchEm */,
+				FD263123197BDD3300495675 /* MatchEmTests */,
+				FD2630FD197BDD3300495675 /* Frameworks */,
+				FD2630FC197BDD3300495675 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FD2630FC197BDD3300495675 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD2630FB197BDD3300495675 /* MatchEm.app */,
+				FD26311C197BDD3300495675 /* MatchEmTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD2630FD197BDD3300495675 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FDE08619197FFD1E00E5EFE5 /* AVFoundation.framework */,
+				FDE08617197FF12700E5EFE5 /* AudioToolbox.framework */,
+				FD0C96FF197E912D007BC986 /* GameKit.framework */,
+				FD263141197BE60E00495675 /* iAd.framework */,
+				FD2630FE197BDD3300495675 /* Foundation.framework */,
+				FD263100197BDD3300495675 /* CoreGraphics.framework */,
+				FD263102197BDD3300495675 /* UIKit.framework */,
+				FD26311D197BDD3300495675 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD263104197BDD3300495675 /* MatchEm */ = {
+			isa = PBXGroup;
+			children = (
+				FDE0860C197FEFFD00E5EFE5 /* Sounds */,
+				FD263137197BDFA100495675 /* models */,
+				FD263133197BDF9500495675 /* generics */,
+				FD26310D197BDD3300495675 /* MatchEmAppDelegate.h */,
+				FD26310E197BDD3300495675 /* MatchEmAppDelegate.m */,
+				FD263110197BDD3300495675 /* Main.storyboard */,
+				FD263113197BDD3300495675 /* MatchEmViewController.h */,
+				FD263114197BDD3300495675 /* MatchEmViewController.m */,
+				FD263116197BDD3300495675 /* Images.xcassets */,
+				FD263105197BDD3300495675 /* Supporting Files */,
+			);
+			path = MatchEm;
+			sourceTree = "<group>";
+		};
+		FD263105197BDD3300495675 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FD263106197BDD3300495675 /* MatchEm-Info.plist */,
+				FD263107197BDD3300495675 /* InfoPlist.strings */,
+				FD26310A197BDD3300495675 /* main.m */,
+				FD26310C197BDD3300495675 /* MatchEm-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FD263123197BDD3300495675 /* MatchEmTests */ = {
+			isa = PBXGroup;
+			children = (
+				FD263129197BDD3300495675 /* MatchEmTests.m */,
+				FD263124197BDD3300495675 /* Supporting Files */,
+			);
+			path = MatchEmTests;
+			sourceTree = "<group>";
+		};
+		FD263124197BDD3300495675 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FD263125197BDD3300495675 /* MatchEmTests-Info.plist */,
+				FD263126197BDD3300495675 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FD263133197BDF9500495675 /* generics */ = {
+			isa = PBXGroup;
+			children = (
+				FD263134197BDF9500495675 /* NSMutableArray+Additions.h */,
+				FD263135197BDF9500495675 /* NSMutableArray+Additions.m */,
+			);
+			path = generics;
+			sourceTree = "<group>";
+		};
+		FD263137197BDFA100495675 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				FD263138197BDFA100495675 /* MemoryCardMatchingGame.h */,
+				FD263139197BDFA100495675 /* MemoryCardMatchingGame.m */,
+				FD26313A197BDFA100495675 /* PlayingCard.h */,
+				FD26313B197BDFA100495675 /* PlayingCard.m */,
+				FD26313C197BDFA100495675 /* PlayingCardDeck.h */,
+				FD26313D197BDFA100495675 /* PlayingCardDeck.m */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		FDE0860C197FEFFD00E5EFE5 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				FDE0861B1980006A00E5EFE5 /* CardFlip.wav */,
+				FDE0861C1980006A00E5EFE5 /* CardMatch.wav */,
+				FDE0861D1980006A00E5EFE5 /* CardsClose.wav */,
+				FDE0861E1980006A00E5EFE5 /* CardsDeal.wav */,
+				FDE0861F1980006A00E5EFE5 /* CardsGameDone.wav */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FD2630FA197BDD3300495675 /* MatchEm */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD26312D197BDD3300495675 /* Build configuration list for PBXNativeTarget "MatchEm" */;
+			buildPhases = (
+				FD2630F7197BDD3300495675 /* Sources */,
+				FD2630F8197BDD3300495675 /* Frameworks */,
+				FD2630F9197BDD3300495675 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MatchEm;
+			productName = MatchEm;
+			productReference = FD2630FB197BDD3300495675 /* MatchEm.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FD26311B197BDD3300495675 /* MatchEmTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD263130197BDD3300495675 /* Build configuration list for PBXNativeTarget "MatchEmTests" */;
+			buildPhases = (
+				FD263118197BDD3300495675 /* Sources */,
+				FD263119197BDD3300495675 /* Frameworks */,
+				FD26311A197BDD3300495675 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FD263122197BDD3300495675 /* PBXTargetDependency */,
+			);
+			name = MatchEmTests;
+			productName = MatchEmTests;
+			productReference = FD26311C197BDD3300495675 /* MatchEmTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD2630F3197BDD3300495675 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MatchEm;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Satish Asok";
+				TargetAttributes = {
+					FD2630FA197BDD3300495675 = {
+						DevelopmentTeam = 8XAWY2HY5W;
+					};
+					FD26311B197BDD3300495675 = {
+						TestTargetID = FD2630FA197BDD3300495675;
+					};
+				};
+			};
+			buildConfigurationList = FD2630F6197BDD3300495675 /* Build configuration list for PBXProject "MatchEm" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FD2630F2197BDD3300495675;
+			productRefGroup = FD2630FC197BDD3300495675 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FD2630FA197BDD3300495675 /* MatchEm */,
+				FD26311B197BDD3300495675 /* MatchEmTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FD2630F9197BDD3300495675 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD263117197BDD3300495675 /* Images.xcassets in Resources */,
+				FDE086201980006A00E5EFE5 /* CardFlip.wav in Resources */,
+				FDE086241980006A00E5EFE5 /* CardsGameDone.wav in Resources */,
+				FDE086211980006A00E5EFE5 /* CardMatch.wav in Resources */,
+				FD263109197BDD3300495675 /* InfoPlist.strings in Resources */,
+				FD263112197BDD3300495675 /* Main.storyboard in Resources */,
+				FDE086231980006A00E5EFE5 /* CardsDeal.wav in Resources */,
+				FDE086221980006A00E5EFE5 /* CardsClose.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD26311A197BDD3300495675 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD263128197BDD3300495675 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FD2630F7197BDD3300495675 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD26313F197BDFA100495675 /* PlayingCard.m in Sources */,
+				FD263115197BDD3300495675 /* MatchEmViewController.m in Sources */,
+				FD263136197BDF9500495675 /* NSMutableArray+Additions.m in Sources */,
+				FD26310F197BDD3300495675 /* MatchEmAppDelegate.m in Sources */,
+				FD263140197BDFA100495675 /* PlayingCardDeck.m in Sources */,
+				FD26310B197BDD3300495675 /* main.m in Sources */,
+				FD26313E197BDFA100495675 /* MemoryCardMatchingGame.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD263118197BDD3300495675 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD26312A197BDD3300495675 /* MatchEmTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FD263122197BDD3300495675 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FD2630FA197BDD3300495675 /* MatchEm */;
+			targetProxy = FD263121197BDD3300495675 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FD263107197BDD3300495675 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD263108197BDD3300495675 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FD263110197BDD3300495675 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD263111197BDD3300495675 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FD263126197BDD3300495675 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD263127197BDD3300495675 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FD26312B197BDD3300495675 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MODULE_NAME = MatchEm;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FD26312C197BDD3300495675 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				MODULE_NAME = MatchEm;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FD26312E197BDD3300495675 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MatchEm/MatchEm-Prefix.pch";
+				INFOPLIST_FILE = "MatchEm/MatchEm-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FD26312F197BDD3300495675 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Satish Asok (8XAWY2HY5W)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MatchEm/MatchEm-Prefix.pch";
+				INFOPLIST_FILE = "MatchEm/MatchEm-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		FD263131197BDD3300495675 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MatchEm.app/MatchEm";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MatchEm/MatchEm-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MatchEmTests/MatchEmTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		FD263132197BDD3300495675 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MatchEm.app/MatchEm";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MatchEm/MatchEm-Prefix.pch";
+				INFOPLIST_FILE = "MatchEmTests/MatchEmTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FD2630F6197BDD3300495675 /* Build configuration list for PBXProject "MatchEm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD26312B197BDD3300495675 /* Debug */,
+				FD26312C197BDD3300495675 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD26312D197BDD3300495675 /* Build configuration list for PBXNativeTarget "MatchEm" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD26312E197BDD3300495675 /* Debug */,
+				FD26312F197BDD3300495675 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD263130197BDD3300495675 /* Build configuration list for PBXNativeTarget "MatchEmTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD263131197BDD3300495675 /* Debug */,
+				FD263132197BDD3300495675 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FD2630F3197BDD3300495675 /* Project object */;
+}
