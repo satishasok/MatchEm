@@ -10,6 +10,7 @@
 #import "PlayingCardDeck.h"
 #import "PlayingCard.h"
 #import "MemoryCardMatchingGame.h"
+#import "MatchEmGameResultViewController.h"
 
 @interface MatchEmViewController ()
 
@@ -18,14 +19,12 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 
 @property (strong, nonatomic) ADBannerView *adBannerView;
-@property (strong, nonatomic) UIButton *dealCardsButton;
-@property (strong, nonatomic) UIButton *settingsButton;
-@property (strong, nonatomic) UIButton *rankingsButton;
 
 @property (strong, nonatomic) PlayingCardDeck *playingCardDeck;
 @property (strong, nonatomic) MemoryCardMatchingGame *matchingGame;
 
 @property (strong, nonatomic) NSTimer *timerForGameDuration;
+@property (assign, nonatomic) BOOL gameOver;
 
 @property (strong, nonatomic) ADInterstitialAd *interstitialAd;
 @property (assign, nonatomic) BOOL currentlyRequestingAd;
@@ -69,32 +68,6 @@
     return _adBannerView;
 }
 
-- (UIButton *)dealCardsButton
-{
-    if (_dealCardsButton == nil) {
-        _dealCardsButton = [[UIButton alloc] init];
-    }
-    
-    return _dealCardsButton;
-}
-
-- (UIButton *)settingsButton
-{
-    if (_settingsButton == nil) {
-        _settingsButton = [[UIButton alloc] init];
-    }
-    
-    return _settingsButton;
-}
-
-- (UIButton *)rankingsButton
-{
-    if (_rankingsButton == nil) {
-        _rankingsButton = [[UIButton alloc] init];
-    }
-    
-    return _rankingsButton;
-}
 
 - (PlayingCardDeck *)playingCardDeck
 {
@@ -124,12 +97,18 @@
     NSTimeInterval gameDurationInSeconds = [now timeIntervalSinceDate:self.matchingGame.gameStartTime];
     self.gameTimeLabel.text = [NSString stringWithFormat:@"Time: %ld secs", (long)gameDurationInSeconds];
     
-    if ([self.matchingGame numberOfUnMatchedCards] == 0) {
+    if (self.matchingGame.gameOver) {
+        self.gameOver = self.matchingGame.gameOver;
         [timer invalidate];
         [self.timerForGameDuration invalidate];
         self.timerForGameDuration = nil;
         AudioServicesPlaySystemSound(self.cardDoneSoundID);
         [self reportFlipCountAndTimeTaken:gameDurationInSeconds];
+        
+        MatchEmGameResultViewController *gameResultViewController = [[MatchEmGameResultViewController alloc] init];
+        gameResultViewController.flipCount = self.matchingGame.flipCount;
+        gameResultViewController.timeTakenInSeconds = gameDurationInSeconds;
+        [self.navigationController pushViewController:gameResultViewController animated:YES];
     }
     
 }
@@ -139,10 +118,10 @@
     [self.timerForGameDuration invalidate];
     self.timerForGameDuration = nil;
     self.matchingGame = nil;
+    self.gameOver = NO;
     
-    [self.gameTimeLabel setText:@"Time: 0 secs"];
     AudioServicesPlaySystemSound(self.cardDealSoundID);
-    [self updateUI]; // this will create a new game, and update the UI.
+    [self resetUI]; // this will create a new game, and update the UI.
 }
 
 - (IBAction)touchSettingsButton:(UIButton *)sender
@@ -170,7 +149,7 @@
     
     if (choosenButtonIndex >= 0) {
         AudioServicesPlaySystemSound(self.cardFlipSoundID);
-        NSInteger numberOfChoosenCards = [self.matchingGame numberOfChoosenCardsUnMatchedCards];
+        NSInteger numberOfChoosenCards = [self.matchingGame numberOfChoosenUnMatchedCards];
         if ( numberOfChoosenCards == 0) {
             [self.matchingGame chooseCardAtIndex:choosenButtonIndex];
             [self updateUI];
@@ -215,6 +194,21 @@
     
 }
 
+- (void)resetUI
+{
+    for (UIButton *cardButton in self.cardButtons) {
+        
+        [cardButton setTitle:@"" forState:UIControlStateNormal];
+        [cardButton setBackgroundImage:[UIImage imageNamed:@"cardback"] forState:UIControlStateNormal];
+        cardButton.enabled = YES;
+        cardButton.hidden = NO;
+    }
+    
+    [self.flipCountLabel setText:[NSString stringWithFormat:@"Flips: %ld", (long)0]];
+    [self.gameTimeLabel setText:[NSString stringWithFormat:@"Time: %ld secs", (long)0]];
+    
+}
+
 //Interstitial iAd
 -(void)showFullScreenAd {
     if (self.currentlyRequestingAd == NO) {
@@ -229,7 +223,14 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self setupSubViews];
+    if (self.gameOver) {
+        [self startNewGame];
+    }
+}
 
+- (void)viewDidLayoutSubviews
+{
+    
 }
 
 - (void)setupSubViews
@@ -240,25 +241,6 @@
     [self.adBannerView setFrame:newBannerViewFrame];
     self.adBannerView.delegate = self;
     [self.view addSubview:self.adBannerView];
-    
-    CGRect newDealButtonFrame = CGRectMake(24, newBannerViewFrame.origin.y-10-40, 40, 40);
-    [self.dealCardsButton setFrame:newDealButtonFrame];
-    [self.dealCardsButton addTarget:self action:@selector(touchDealButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.dealCardsButton setImage:[UIImage imageNamed:@"Dealing_Cards"] forState:UIControlStateNormal];
-    [self.view addSubview:self.dealCardsButton];
-    
-    CGRect newSettingsButtonFrame = CGRectMake(viewFrame.size.width-24-40, newDealButtonFrame.origin.y, 40, 40);
-    [self.settingsButton setFrame:newSettingsButtonFrame];
-    [self.settingsButton addTarget:self action:@selector(touchSettingsButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.settingsButton setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
-    [self.view addSubview:self.settingsButton];
-    
-    CGRect newRankingsButtonFrame = CGRectMake(newSettingsButtonFrame.origin.x-24-40, newDealButtonFrame.origin.y, 40, 40);
-    [self.rankingsButton setFrame:newRankingsButtonFrame];
-    [self.rankingsButton addTarget:self action:@selector(touchRankingsButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.rankingsButton setImage:[UIImage imageNamed:@"ranking"] forState:UIControlStateNormal];
-    [self.view addSubview:self.rankingsButton];
-    
     
 }
 
@@ -275,6 +257,29 @@
     self.cardMatchSoundID = [self loadSoundEffect:@"CardMatch" ofType:@"wav"];
     self.cardDealSoundID = [self loadSoundEffect:@"CardsDeal" ofType:@"wav"];
     self.cardDoneSoundID = [self loadSoundEffect:@"CardsGameDone" ofType:@"wav"];
+    
+    [self setNavigationItems];
+    
+}
+
+- (void)setNavigationItems
+{
+    [self setTitle:@"Match'em"];
+
+    UIBarButtonItem *dealCardsBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Deal"
+                                                                               style:UIBarButtonItemStylePlain
+                                                                              target:self
+                                                                              action:@selector(touchDealButton:)];
+    [self.navigationItem setRightBarButtonItem:dealCardsBarButtonItem];
+    
+    
+    UIBarButtonItem *settingsBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Rankings"
+                                                                               style:UIBarButtonItemStylePlain
+                                                                              target:self
+                                                                              action:@selector(touchRankingsButton:)];
+    [self.navigationItem setLeftBarButtonItem:settingsBarButtonItem];
+    
+    
     
 }
 
@@ -336,7 +341,7 @@
     NSLog(@"Ad DidLOAD");
     if (interstitialAd.loaded) {
         CGRect interstitialFrame = self.view.bounds;
-        interstitialFrame.origin = CGPointMake(0, 0);
+        interstitialFrame.origin = CGPointMake(0, 60);
         self.interstitialAdView = [[UIView alloc] initWithFrame:interstitialFrame];
         [self.view addSubview:self.interstitialAdView];
         
@@ -458,5 +463,6 @@
 {
     [gameCenterViewController dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end

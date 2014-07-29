@@ -69,7 +69,7 @@
     return ((index >= 0 && index < self.cards.count) ? self.cards[index] : nil);
 }
 
-- (NSInteger)numberOfChoosenCardsUnMatchedCards
+- (NSInteger)numberOfChoosenUnMatchedCards
 {
     NSInteger numberOfChoosenCards = 0;
     
@@ -142,6 +142,9 @@
                         otherCard.chosen = NO;
                         card.chosen = NO;
                     }
+                    if ([self numberOfUnMatchedCards] == 0) {
+                        self.gameOver = YES;
+                    }
                     return cardsMatched;
                 }
             }
@@ -149,6 +152,9 @@
         }
     }
     
+    if ([self numberOfUnMatchedCards] == 0) {
+        self.gameOver = YES;
+    }
     return cardsMatched;
 }
 

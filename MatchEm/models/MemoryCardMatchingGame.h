@@ -16,8 +16,7 @@
 
 - (id)initWithCards:(NSInteger)cardCount usingDeck:(PlayingCardDeck *)cardDeck;
 
-- (NSInteger)numberOfChoosenCardsUnMatchedCards;
-- (NSInteger)numberOfUnMatchedCards;
+- (NSInteger)numberOfChoosenUnMatchedCards;
 
 - (BOOL)selectCardAtIndex:(NSInteger)index;
 - (BOOL)deSelectCardAtIndex:(NSInteger)index;
@@ -27,5 +26,7 @@
 
 @property (nonatomic, readonly) NSInteger flipCount;
 @property (nonatomic, strong) NSDate *gameStartTime;
+
+@property (nonatomic, assign) BOOL gameOver;
 
 @end

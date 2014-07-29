@@ -27,6 +27,7 @@
 		FD26313F197BDFA100495675 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = FD26313B197BDFA100495675 /* PlayingCard.m */; };
 		FD263140197BDFA100495675 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = FD26313D197BDFA100495675 /* PlayingCardDeck.m */; };
 		FD263142197BE60E00495675 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD263141197BE60E00495675 /* iAd.framework */; };
+		FD4634F01987D7C900AC874C /* MatchEmGameResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4634EF1987D7C900AC874C /* MatchEmGameResultViewController.m */; };
 		FDE08618197FF12700E5EFE5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE08617197FF12700E5EFE5 /* AudioToolbox.framework */; };
 		FDE0861A197FFD1E00E5EFE5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE08619197FFD1E00E5EFE5 /* AVFoundation.framework */; };
 		FDE086201980006A00E5EFE5 /* CardFlip.wav in Resources */ = {isa = PBXBuildFile; fileRef = FDE0861B1980006A00E5EFE5 /* CardFlip.wav */; };
@@ -76,6 +77,8 @@
 		FD26313C197BDFA100495675 /* PlayingCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardDeck.h; sourceTree = "<group>"; };
 		FD26313D197BDFA100495675 /* PlayingCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardDeck.m; sourceTree = "<group>"; };
 		FD263141197BE60E00495675 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		FD4634EE1987D7C900AC874C /* MatchEmGameResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchEmGameResultViewController.h; sourceTree = "<group>"; };
+		FD4634EF1987D7C900AC874C /* MatchEmGameResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchEmGameResultViewController.m; sourceTree = "<group>"; };
 		FDE08617197FF12700E5EFE5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FDE08619197FFD1E00E5EFE5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FDE0861B1980006A00E5EFE5 /* CardFlip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CardFlip.wav; sourceTree = "<group>"; };
@@ -150,14 +153,13 @@
 		FD263104197BDD3300495675 /* MatchEm */ = {
 			isa = PBXGroup;
 			children = (
+				FD4634F11987E51300AC874C /* View Controllers */,
 				FDE0860C197FEFFD00E5EFE5 /* Sounds */,
 				FD263137197BDFA100495675 /* models */,
 				FD263133197BDF9500495675 /* generics */,
 				FD26310D197BDD3300495675 /* MatchEmAppDelegate.h */,
 				FD26310E197BDD3300495675 /* MatchEmAppDelegate.m */,
 				FD263110197BDD3300495675 /* Main.storyboard */,
-				FD263113197BDD3300495675 /* MatchEmViewController.h */,
-				FD263114197BDD3300495675 /* MatchEmViewController.m */,
 				FD263116197BDD3300495675 /* Images.xcassets */,
 				FD263105197BDD3300495675 /* Supporting Files */,
 			);
@@ -213,6 +215,17 @@
 				FD26313D197BDFA100495675 /* PlayingCardDeck.m */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		FD4634F11987E51300AC874C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FD263113197BDD3300495675 /* MatchEmViewController.h */,
+				FD263114197BDD3300495675 /* MatchEmViewController.m */,
+				FD4634EE1987D7C900AC874C /* MatchEmGameResultViewController.h */,
+				FD4634EF1987D7C900AC874C /* MatchEmGameResultViewController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 		FDE0860C197FEFFD00E5EFE5 /* Sounds */ = {
@@ -334,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD26313F197BDFA100495675 /* PlayingCard.m in Sources */,
+				FD4634F01987D7C900AC874C /* MatchEmGameResultViewController.m in Sources */,
 				FD263115197BDD3300495675 /* MatchEmViewController.m in Sources */,
 				FD263136197BDF9500495675 /* NSMutableArray+Additions.m in Sources */,
 				FD26310F197BDD3300495675 /* MatchEmAppDelegate.m in Sources */,
