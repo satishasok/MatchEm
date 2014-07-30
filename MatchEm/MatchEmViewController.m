@@ -11,12 +11,14 @@
 #import "PlayingCard.h"
 #import "MemoryCardMatchingGame.h"
 #import "MatchEmGameResultViewController.h"
+#import "PlayingCardView.h"
 
 @interface MatchEmViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *flipCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *gameTimeLabel;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (strong, nonatomic) IBOutletCollection(PlayingCardView) NSArray *playingCardViews;
+
 
 @property (strong, nonatomic) ADBannerView *adBannerView;
 
@@ -81,7 +83,7 @@
 - (MemoryCardMatchingGame *)matchingGame
 {
     if (!_matchingGame) {
-        _matchingGame = [[MemoryCardMatchingGame alloc] initWithCards:self.cardButtons.count usingDeck:[[PlayingCardDeck alloc] init]];
+        _matchingGame = [[MemoryCardMatchingGame alloc] initWithCards:self.playingCardViews.count usingDeck:[[PlayingCardDeck alloc] init]];
         if (_matchingGame) {
             self.timerForGameDuration = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerTick:) userInfo:nil repeats:YES];
         }
@@ -121,20 +123,17 @@
     self.gameOver = NO;
     
     AudioServicesPlaySystemSound(self.cardDealSoundID);
+    [self setupPlayingCardViews];
     [self resetUI]; // this will create a new game, and update the UI.
 }
 
-- (IBAction)touchSettingsButton:(UIButton *)sender
-{
-}
-
-- (IBAction)touchRankingsButton:(UIButton *)sender
+- (void)touchRankingsButton:(UIButton *)sender
 {
     [self showGameCenterLeaderboard];
 }
 
 
-- (IBAction)touchDealButton:(UIButton *)sender
+- (void)touchDealButton:(UIButton *)sender
 {
     if ((self.newGameCounter%3) == 0) {
         [self showFullScreenAd];
@@ -143,26 +142,27 @@
     }
 }
 
-- (IBAction)touchCardButton:(id)sender
+- (IBAction)touchPlayingCardView:(id)sender
 {
-    __block NSInteger choosenButtonIndex = [self.cardButtons indexOfObject:sender];
+    UITapGestureRecognizer *tapGestureRecognizer = sender;
+    PlayingCardView *playingCardView = (PlayingCardView *)tapGestureRecognizer.view;
     
-    if (choosenButtonIndex >= 0) {
+    if (playingCardView.playingCard) {
         AudioServicesPlaySystemSound(self.cardFlipSoundID);
         NSInteger numberOfChoosenCards = [self.matchingGame numberOfChoosenUnMatchedCards];
         if ( numberOfChoosenCards == 0) {
-            [self.matchingGame chooseCardAtIndex:choosenButtonIndex];
+            [self.matchingGame chooseCard:playingCardView.playingCard];
             [self updateUI];
         } else if (numberOfChoosenCards == 1) {
-            if ([self.matchingGame selectCardAtIndex:choosenButtonIndex]) {
+            if ([self.matchingGame selectCard:playingCardView.playingCard]) {
                 [self updateUI];
                 __weak typeof (self) weakSelf = self;
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
                     sleep(1.0f);
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        if (choosenButtonIndex >= 0) {
-                            [weakSelf.matchingGame deSelectCardAtIndex:choosenButtonIndex];
-                            BOOL isCardsMatched = [weakSelf.matchingGame chooseCardAtIndex:choosenButtonIndex];
+                        if (playingCardView.playingCard) {
+                            [weakSelf.matchingGame deSelectCard:playingCardView.playingCard];
+                            BOOL isCardsMatched = [weakSelf.matchingGame chooseCard:playingCardView.playingCard];
                             if (isCardsMatched) {
                                 AudioServicesPlaySystemSound(self.cardMatchSoundID);
                             } else {
@@ -180,14 +180,11 @@
 
 - (void)updateUI
 {
-    for (UIButton *cardButton in self.cardButtons) {
-        NSInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
-        PlayingCard *card = [self.matchingGame cardAtIndex:cardButtonIndex];
+    for (PlayingCardView *playingCardView in self.playingCardViews) {
+        PlayingCard *card = playingCardView.playingCard;
         
-        [cardButton setTitle:card.isChosen ? card.contents : @"" forState:UIControlStateNormal];
-        [cardButton setBackgroundImage:[UIImage imageNamed:card.isChosen ? @"cardfront" : @"cardback"] forState:UIControlStateNormal];
-        cardButton.enabled = !card.isMatched;
-        cardButton.hidden = card.isMatched;
+        playingCardView.faceUp = card.isChosen;
+        playingCardView.hidden = card.isMatched;
     }
     
     [self.flipCountLabel setText:[NSString stringWithFormat:@"Flips: %ld", (long)self.matchingGame.flipCount]];
@@ -196,12 +193,10 @@
 
 - (void)resetUI
 {
-    for (UIButton *cardButton in self.cardButtons) {
+    for (PlayingCardView *playingCardView in self.playingCardViews) {
         
-        [cardButton setTitle:@"" forState:UIControlStateNormal];
-        [cardButton setBackgroundImage:[UIImage imageNamed:@"cardback"] forState:UIControlStateNormal];
-        cardButton.enabled = YES;
-        cardButton.hidden = NO;
+        playingCardView.faceUp = NO;
+        playingCardView.hidden = NO;
     }
     
     [self.flipCountLabel setText:[NSString stringWithFormat:@"Flips: %ld", (long)0]];
@@ -259,7 +254,18 @@
     self.cardDoneSoundID = [self loadSoundEffect:@"CardsGameDone" ofType:@"wav"];
     
     [self setNavigationItems];
+    [self setupPlayingCardViews];
     
+}
+
+- (void)setupPlayingCardViews
+{
+    NSInteger index = 0;
+    for (PlayingCardView *playingCardView in self.playingCardViews)
+    {
+        playingCardView.playingCard = [self.matchingGame cardAtIndex:index];
+        index++;
+    }
 }
 
 - (void)setNavigationItems

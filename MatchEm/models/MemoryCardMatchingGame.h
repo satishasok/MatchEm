@@ -20,9 +20,13 @@
 
 - (BOOL)selectCardAtIndex:(NSInteger)index;
 - (BOOL)deSelectCardAtIndex:(NSInteger)index;
+- (BOOL)selectCard:(PlayingCard *)card;
+- (BOOL)deSelectCard:(PlayingCard *)card;
+
 
 - (PlayingCard *)cardAtIndex:(NSInteger)index;
 - (BOOL)chooseCardAtIndex:(NSInteger)index;
+- (BOOL)chooseCard:(PlayingCard *)card;
 
 @property (nonatomic, readonly) NSInteger flipCount;
 @property (nonatomic, strong) NSDate *gameStartTime;

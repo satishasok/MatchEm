@@ -28,6 +28,7 @@
 		FD263140197BDFA100495675 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = FD26313D197BDFA100495675 /* PlayingCardDeck.m */; };
 		FD263142197BE60E00495675 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD263141197BE60E00495675 /* iAd.framework */; };
 		FD4634F01987D7C900AC874C /* MatchEmGameResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4634EF1987D7C900AC874C /* MatchEmGameResultViewController.m */; };
+		FD463507198871A900AC874C /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD463506198871A900AC874C /* PlayingCardView.m */; };
 		FDE08618197FF12700E5EFE5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE08617197FF12700E5EFE5 /* AudioToolbox.framework */; };
 		FDE0861A197FFD1E00E5EFE5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE08619197FFD1E00E5EFE5 /* AVFoundation.framework */; };
 		FDE086201980006A00E5EFE5 /* CardFlip.wav in Resources */ = {isa = PBXBuildFile; fileRef = FDE0861B1980006A00E5EFE5 /* CardFlip.wav */; };
@@ -79,6 +80,8 @@
 		FD263141197BE60E00495675 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		FD4634EE1987D7C900AC874C /* MatchEmGameResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchEmGameResultViewController.h; sourceTree = "<group>"; };
 		FD4634EF1987D7C900AC874C /* MatchEmGameResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchEmGameResultViewController.m; sourceTree = "<group>"; };
+		FD463505198871A900AC874C /* PlayingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
+		FD463506198871A900AC874C /* PlayingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
 		FDE08617197FF12700E5EFE5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FDE08619197FFD1E00E5EFE5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FDE0861B1980006A00E5EFE5 /* CardFlip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CardFlip.wav; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 		FD263104197BDD3300495675 /* MatchEm */ = {
 			isa = PBXGroup;
 			children = (
+				FD463504198871A900AC874C /* Views */,
 				FD4634F11987E51300AC874C /* View Controllers */,
 				FDE0860C197FEFFD00E5EFE5 /* Sounds */,
 				FD263137197BDFA100495675 /* models */,
@@ -226,6 +230,15 @@
 				FD4634EF1987D7C900AC874C /* MatchEmGameResultViewController.m */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		FD463504198871A900AC874C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FD463505198871A900AC874C /* PlayingCardView.h */,
+				FD463506198871A900AC874C /* PlayingCardView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FDE0860C197FEFFD00E5EFE5 /* Sounds */ = {
@@ -350,6 +363,7 @@
 				FD4634F01987D7C900AC874C /* MatchEmGameResultViewController.m in Sources */,
 				FD263115197BDD3300495675 /* MatchEmViewController.m in Sources */,
 				FD263136197BDF9500495675 /* NSMutableArray+Additions.m in Sources */,
+				FD463507198871A900AC874C /* PlayingCardView.m in Sources */,
 				FD26310F197BDD3300495675 /* MatchEmAppDelegate.m in Sources */,
 				FD263140197BDFA100495675 /* PlayingCardDeck.m in Sources */,
 				FD26310B197BDD3300495675 /* main.m in Sources */,

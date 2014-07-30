@@ -118,11 +118,36 @@
     return NO;
 }
 
+- (BOOL)selectCard:(PlayingCard *)card
+{
+    if (!card.isChosen) {
+        card.chosen = YES;
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (BOOL)deSelectCard:(PlayingCard *)card
+{
+    if (card.isChosen) {
+        card.chosen = NO;
+        return YES;
+    }
+    return NO;
+}
+
 - (BOOL)chooseCardAtIndex:(NSInteger)index
 {
-    BOOL cardsMatched = NO;
+    
     PlayingCard *card = [self cardAtIndex:index];
     
+    return [self chooseCard:card];
+}
+
+- (BOOL)chooseCard:(PlayingCard *)card
+{
+    BOOL cardsMatched = NO;
     if (card && !card.isMatched) {
         if (!card.isChosen) {
             
