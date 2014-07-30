@@ -16,7 +16,7 @@
 
 #pragma mark - Properties
 
-#define DEFAULT_FACE_CARD_SCALE_FACTOR 0.90
+#define DEFAULT_FACE_CARD_SCALE_FACTOR 0.79
 
 @synthesize faceCardScaleFactor = _faceCardScaleFactor;
 
@@ -102,7 +102,7 @@
     UIFont *cornerFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     cornerFont = [cornerFont fontWithSize:cornerFont.pointSize * [self cornerScaleFactor]];
     
-    NSAttributedString *cornerText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@", [self.playingCard rankString], self.playingCard.suit] attributes:@{ NSFontAttributeName : cornerFont, NSParagraphStyleAttributeName : paragraphStyle }];
+    NSAttributedString *cornerText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n%@", [self.playingCard rankString], self.playingCard.suit] attributes:@{ NSFontAttributeName : cornerFont, NSParagraphStyleAttributeName : paragraphStyle }];
     
     CGRect textBounds;
     textBounds.origin = CGPointMake([self cornerOffset], [self cornerOffset]);
